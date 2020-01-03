@@ -20,7 +20,7 @@ module.exports = {
       },
     },
   },
-  initialState: {},
+  initialState: { todos: [] },
   channels: {
     messenger: {
       enabled: true,
