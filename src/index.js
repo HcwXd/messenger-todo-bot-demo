@@ -1,4 +1,4 @@
-const { router, text, route } = require('bottender/router');
+const { router, text, route, payload } = require('bottender/router');
 
 async function addTodo(context) {
   const todoTitle = context.event.text.slice(3);
@@ -37,8 +37,14 @@ async function deleteTodo(context) {
   await context.sendText(`Delete todo: ${targetTodo}`);
 }
 
+async function sendIntroduction(context) {
+  const intro = `Welcome to Todo bot!\n\nTo add a todo, use "/a myTodoTitle"\n\nTo list todos, enter "/l"\n\nTo delete a todo, enter "/l" then choose the todo you want to delete`;
+  await context.sendText(intro);
+}
+
 module.exports = async function App(context) {
   return router([
+    payload('GET_STARTED', sendIntroduction),
     text(/^\/a/, addTodo),
     text('/l', listTodo),
     route(
