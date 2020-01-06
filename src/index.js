@@ -38,8 +38,10 @@ async function deleteTodo(context) {
 }
 
 async function sendIntroduction(context) {
-  const intro = `Welcome to Todo bot!\n\nTo add a todo, use "/a myTodoTitle"\n\nTo list todos, enter "/l"\n\nTo delete a todo, enter "/l" then choose the todo you want to delete`;
-  await context.sendText(intro);
+  await context.sendText(`Welcome to Todo bot!`);
+  await context.sendText(`To add a todo, use "/a myTodoTitle"`);
+  await context.sendText(`To list todos, enter "/l"`);
+  await context.sendText(`To delete a todo, enter "/l" then choose the todo you want to delete`);
 }
 
 module.exports = async function App(context) {
